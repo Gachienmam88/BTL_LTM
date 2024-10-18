@@ -1,0 +1,369 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 18, 2024 lúc 08:40 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Cơ sở dữ liệu: `btl_ltm`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `bxh_user`
+--
+
+CREATE TABLE `bxh_user` (
+  `user_id` int(11) DEFAULT NULL,
+  `match_id` int(11) DEFAULT NULL,
+  `rating` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `bxh_user`
+--
+
+INSERT INTO `bxh_user` (`user_id`, `match_id`, `rating`) VALUES
+(2, 1, 1),
+(1, 1, 2),
+(3, 2, 1),
+(4, 2, 2),
+(1, 2, 3),
+(2, 2, 4),
+(1, 3, 1),
+(1, 4, 1),
+(4, 6, 1),
+(2, 6, 2),
+(3, 6, 3),
+(1, 6, 4),
+(1, 7, 1),
+(1, 8, 1),
+(2, 8, 2),
+(2, 8, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `cards`
+--
+
+CREATE TABLE `cards` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `value` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cards`
+--
+
+INSERT INTO `cards` (`id`, `name`, `value`, `image`) VALUES
+(1, '2C', '2C', '/asset/image/2C.png'),
+(2, '2D', '2D', '/asset/image/2D.png'),
+(3, '2H', '2H', '/asset/image/2H.png'),
+(4, '2S', '2S', '/asset/image/2S.png'),
+(5, '3C', '3C', '/asset/image/3C.png'),
+(6, '3D', '3D', '/asset/image/3D.png'),
+(7, '3H', '3H', '/asset/image/3H.png'),
+(8, '3S', '3S', '/asset/image/3S.png'),
+(9, '4C', '4C', '/asset/image/4C.png'),
+(10, '4D', '4D', '/asset/image/4D.png'),
+(11, '4H', '4H', '/asset/image/4H.png'),
+(12, '4S', '4S', '/asset/image/4S.png'),
+(13, '5C', '5C', '/asset/image/5C.png'),
+(14, '5D', '5D', '/asset/image/5D.png'),
+(15, '5H', '5H', '/asset/image/5H.png'),
+(16, '5S', '5S', '/asset/image/5S.png'),
+(17, '6C', '6C', '/asset/image/6C.png'),
+(18, '6D', '6D', '/asset/image/6D.png'),
+(19, '6H', '6H', '/asset/image/6H.png'),
+(20, '6S', '6S', '/asset/image/6S.png'),
+(21, '7C', '7C', '/asset/image/7C.png'),
+(22, '7D', '7D', '/asset/image/7D.png'),
+(23, '7H', '7H', '/asset/image/7H.png'),
+(24, '7S', '7S', '/asset/image/7S.png'),
+(25, '8C', '8C', '/asset/image/8C.png'),
+(26, '8D', '8D', '/asset/image/8D.png'),
+(27, '8H', '8H', '/asset/image/8H.png'),
+(28, '8S', '8S', '/asset/image/8S.png'),
+(29, '9C', '9C', '/asset/image/9C.png'),
+(30, '9D', '9D', '/asset/image/9D.png'),
+(31, '9H', '9H', '/asset/image/9H.png'),
+(32, '9S', '9S', '/asset/image/9S.png'),
+(33, '1C', '1C', '/asset/image/1C.png'),
+(34, '1D', '1D', '/asset/image/1D.png'),
+(35, '1H', '1H', '/asset/image/1H.png'),
+(36, '1S', '1S', '/asset/image/1S.png');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `matchs`
+--
+
+CREATE TABLE `matchs` (
+  `id` int(11) NOT NULL,
+  `room_id` int(11) DEFAULT NULL,
+  `start_time` datetime DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `matchs`
+--
+
+INSERT INTO `matchs` (`id`, `room_id`, `start_time`, `end_time`) VALUES
+(1, NULL, '2024-10-18 11:12:06', NULL),
+(2, NULL, '2024-10-18 11:21:52', NULL),
+(3, NULL, '2024-10-18 11:35:30', NULL),
+(4, NULL, '2024-10-18 11:39:30', NULL),
+(5, NULL, '2024-10-18 11:45:02', NULL),
+(6, NULL, '2024-10-18 12:03:03', NULL),
+(7, NULL, '2024-10-18 12:56:42', NULL),
+(8, NULL, '2024-10-18 13:34:05', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `match_user`
+--
+
+CREATE TABLE `match_user` (
+  `match_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `card_id` int(11) DEFAULT NULL,
+  `position` int(11) NOT NULL,
+  `time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `match_user`
+--
+
+INSERT INTO `match_user` (`match_id`, `user_id`, `card_id`, `position`, `time`) VALUES
+(1, 2, 26, 4, '2024-10-18 11:12:11'),
+(1, 2, 34, 5, '2024-10-18 11:12:13'),
+(1, 2, 22, 6, '2024-10-18 11:12:15'),
+(1, 1, 24, 1, '2024-10-18 11:12:18'),
+(1, 1, 23, 2, '2024-10-18 11:12:20'),
+(1, 1, 33, 3, '2024-10-18 11:12:21'),
+(2, 3, 35, 1, '2024-10-18 11:21:57'),
+(2, 1, 12, 7, '2024-10-18 11:21:58'),
+(2, 1, 15, 8, '2024-10-18 11:21:59'),
+(2, 1, 31, 9, '2024-10-18 11:22:00'),
+(2, 3, 28, 2, '2024-10-18 11:22:02'),
+(2, 2, 26, 10, '2024-10-18 11:22:02'),
+(2, 2, 3, 11, '2024-10-18 11:22:03'),
+(2, 2, 22, 12, '2024-10-18 11:22:04'),
+(2, 4, 34, 4, '2024-10-18 11:22:04'),
+(2, 3, 8, 3, '2024-10-18 11:22:06'),
+(2, 3, 10, 0, '2024-10-18 11:22:12'),
+(2, 3, 29, 0, '2024-10-18 11:22:16'),
+(2, 4, 18, 5, '2024-10-18 11:22:16'),
+(2, 4, 19, 6, '2024-10-18 11:22:18'),
+(2, 3, 23, 0, '2024-10-18 11:22:19'),
+(2, 4, 1, 0, '2024-10-18 11:22:20'),
+(2, 4, 4, 0, '2024-10-18 11:22:21'),
+(2, 4, 20, 0, '2024-10-18 11:22:25'),
+(2, 4, 32, 0, '2024-10-18 11:22:27'),
+(3, 1, 10, 1, '2024-10-18 11:35:47'),
+(3, 1, 30, 2, '2024-10-18 11:35:48'),
+(3, 1, 15, 3, '2024-10-18 11:35:49'),
+(4, 1, 18, 1, '2024-10-18 11:39:48'),
+(4, 1, 7, 2, '2024-10-18 11:39:49'),
+(4, 1, 5, 3, '2024-10-18 11:39:49'),
+(6, 4, 10, 1, '2024-10-18 12:03:13'),
+(6, 4, 23, 2, '2024-10-18 12:03:14'),
+(6, 4, 14, 3, '2024-10-18 12:03:15'),
+(6, 3, 12, 4, '2024-10-18 12:03:18'),
+(6, 3, 24, 5, '2024-10-18 12:03:19'),
+(6, 3, 3, 6, '2024-10-18 12:03:20'),
+(6, 2, 29, 7, '2024-10-18 12:03:24'),
+(6, 2, 7, 8, '2024-10-18 12:03:24'),
+(6, 2, 5, 9, '2024-10-18 12:03:25'),
+(6, 1, 6, 10, '2024-10-18 12:03:28'),
+(6, 1, 35, 11, '2024-10-18 12:03:29'),
+(6, 1, 30, 12, '2024-10-18 12:03:30'),
+(7, 1, 25, 1, '2024-10-18 12:56:55'),
+(7, 1, 26, 2, '2024-10-18 12:56:55'),
+(7, 1, 20, 3, '2024-10-18 12:56:56'),
+(8, 1, 11, 1, '2024-10-18 13:34:09'),
+(8, 1, 16, 2, '2024-10-18 13:34:09'),
+(8, 1, 25, 3, '2024-10-18 13:34:10'),
+(8, 2, 4, 4, '2024-10-18 13:34:12'),
+(8, 2, 8, 5, '2024-10-18 13:34:12'),
+(8, 2, 21, 6, '2024-10-18 13:34:12');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `rooms`
+--
+
+CREATE TABLE `rooms` (
+  `id` int(11) NOT NULL,
+  `room_name` varchar(255) NOT NULL,
+  `is_start` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `userroom`
+--
+
+CREATE TABLE `userroom` (
+  `user_id` int(11) DEFAULT NULL,
+  `room_id` int(11) DEFAULT NULL,
+  `is_ready` tinyint(1) DEFAULT NULL,
+  `position` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `is_online` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `is_online`) VALUES
+(1, 'user1', '123', 1),
+(2, 'user2', '123', 0),
+(3, 'user3', '123', 0),
+(4, 'user4', '123', 0);
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `bxh_user`
+--
+ALTER TABLE `bxh_user`
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `match_id` (`match_id`);
+
+--
+-- Chỉ mục cho bảng `cards`
+--
+ALTER TABLE `cards`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `matchs`
+--
+ALTER TABLE `matchs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `room_id` (`room_id`);
+
+--
+-- Chỉ mục cho bảng `match_user`
+--
+ALTER TABLE `match_user`
+  ADD KEY `match_id` (`match_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `cardId` (`card_id`);
+
+--
+-- Chỉ mục cho bảng `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `userroom`
+--
+ALTER TABLE `userroom`
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `room_id` (`room_id`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `cards`
+--
+ALTER TABLE `cards`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT cho bảng `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `bxh_user`
+--
+ALTER TABLE `bxh_user`
+  ADD CONSTRAINT `bxh_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `bxh_user_ibfk_2` FOREIGN KEY (`match_id`) REFERENCES `matchs` (`id`);
+
+--
+-- Các ràng buộc cho bảng `matchs`
+--
+ALTER TABLE `matchs`
+  ADD CONSTRAINT `matchs_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`);
+
+--
+-- Các ràng buộc cho bảng `match_user`
+--
+ALTER TABLE `match_user`
+  ADD CONSTRAINT `match_user_ibfk_1` FOREIGN KEY (`match_id`) REFERENCES `matchs` (`id`),
+  ADD CONSTRAINT `match_user_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `match_user_ibfk_3` FOREIGN KEY (`card_id`) REFERENCES `cards` (`id`);
+
+--
+-- Các ràng buộc cho bảng `userroom`
+--
+ALTER TABLE `userroom`
+  ADD CONSTRAINT `userroom_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `userroom_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
