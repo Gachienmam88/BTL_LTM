@@ -427,7 +427,21 @@ public class LobbyView extends javax.swing.JFrame {
             Response res1 = (Response) client.sendRequest(new Request("GET_ROOM_BY_ID", roomId));
             Room room = (Room) res1.getPayload();
             // Tạo nút với thông tin phòng
-            JButton roomButton = new JButton("<html><center>" + room.getRoomName() + "<br/>Players: " + list.size() + "</center></html>");
+             JButton roomButton = new JButton(
+    "<html>" +
+        "<table width='100%'>" +
+            // Dòng 1: Tên phòng bên trái, ID phòng bên phải
+            "<tr>" +
+                "<td align='left'>"+"Tên phòng : " + room.getRoomName() + "</td>" +
+                "<td align='right'>"+"Mã phòng : " + room.getId() + "</td>" +
+            "</tr>" +
+            // Dòng 2: Số người chơi ở giữa
+            "<tr>" +
+                "<td colspan='2' align='center'>Số người : " + list.size() + "</td>" +
+            "</tr>" +
+        "</table>" +
+    "</html>"
+);
             roomButton.setPreferredSize(new java.awt.Dimension(this.getWidth() / 2 - 10, roomButton.getPreferredSize().height));
             roomButton.addActionListener(e -> {
                 try {

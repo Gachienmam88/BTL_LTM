@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -825,13 +827,13 @@ public class RoomView extends javax.swing.JFrame {
 
                 Response response = (Response) client.sendRequest(new Request("EXIT_ROOM", roomuser));
 //                    JOptionPane.showMessageDialog(null, "Rời phòng thành công !");
-                    client.roomView = null;
-                    this.dispose();
-                    LobbyView lb;
-                    lb = new LobbyView(client, client.getPlayer());
-                    lb.setVisible(true);
-                    client.setLobbyView(lb);
-                
+                client.roomView = null;
+                this.dispose();
+                LobbyView lb;
+                lb = new LobbyView(client, client.getPlayer());
+                lb.setVisible(true);
+                client.setLobbyView(lb);
+
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(RoomView.class.getName()).log(Level.SEVERE, null, ex);
@@ -904,21 +906,23 @@ public class RoomView extends javax.swing.JFrame {
     private void showInviteDialog() throws InterruptedException {
         JDialog dialog = new JDialog(this, "Mời người chơi", true);
 
-        dialog.setSize(500, 700);
+        dialog.setSize(450, 350);
         dialog.setLayout(new BorderLayout());
-
+        dialog.setLocationRelativeTo(null);
         // Nút đóng dialog
-        JPanel headerPanel = new JPanel(new BorderLayout());
-        JButton closeButton = new JButton("X");
-        closeButton.addActionListener(e -> dialog.dispose());
-        headerPanel.add(closeButton, BorderLayout.EAST);
-
-        // Thêm panel header vào dialog
-        dialog.add(headerPanel, BorderLayout.NORTH);
+//        JPanel headerPanel = new JPanel(new BorderLayout());
+//        JButton closeButton = new JButton("X");
+//        closeButton.addActionListener(e -> dialog.dispose());
+//        headerPanel.add(closeButton, BorderLayout.EAST);
+//
+//        // Thêm panel header vào dialog
+//        dialog.add(headerPanel, BorderLayout.NORTH);
 
         // Panel chứa danh sách người chơi
         JPanel playersPanel = new JPanel();
-        playersPanel.setLayout(new BoxLayout(playersPanel, BoxLayout.Y_AXIS));
+        playersPanel.setLayout(new GridLayout(2, 2)); // Ví dụ: lưới 2x2
+
+
 
         // Lấy danh sách người chơi online từ server
         try {
