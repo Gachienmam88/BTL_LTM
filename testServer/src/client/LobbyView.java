@@ -229,7 +229,7 @@ public class LobbyView extends javax.swing.JFrame {
             "</tr>" +
             // Dòng 2: Số người chơi ở giữa
             "<tr>" +
-                "<td colspan='2' align='center'>Số người : " + list.size() + "</td>" +
+                "<td colspan='2' align='center'>Số người : " + list.size() + "/4"+"</td>" +
             "</tr>" +
         "</table>" +
     "</html>"
@@ -437,7 +437,7 @@ public class LobbyView extends javax.swing.JFrame {
             "</tr>" +
             // Dòng 2: Số người chơi ở giữa
             "<tr>" +
-                "<td colspan='2' align='center'>Số người : " + list.size() + "</td>" +
+                "<td colspan='2' align='center'>Số người : " + list.size() +"/4"+ "</td>" +
             "</tr>" +
         "</table>" +
     "</html>"
